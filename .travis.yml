@@ -53,7 +53,7 @@ before_script: bash ./.bin/setup.sh
 # All commands must exit with code 0 on success. Anything else is considered failure.
 script:
   - ls -al style.css
-  - composer test
+
 
 # Execute script on success
 after_script: bash ./.bin/deploy.sh
