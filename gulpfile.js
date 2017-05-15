@@ -8,7 +8,7 @@ var gulp         = require('gulp'),
 	//csso         = require('gulp-csso'),
 	postcss      = require('gulp-postcss'),
 	cssnano      = require('cssnano');
-	autoprefixer = require('autoprefixer'),
+	//autoprefixer = require('autoprefixer'),
 	doiuse       = require('doiuse'),
 	mqpacker     = require('css-mqpacker'),
 	watch        = require('gulp-watch'),
@@ -111,7 +111,7 @@ gulp.task('scss', function(){
 				// an optional array of file globs to match against original source file path, to ignore
 				ignoreFiles: ['**/normalize.scss']
 			}),
-			autoprefixer({browsers: browsers}),
+			//autoprefixer({browsers: browsers}),
 			mqpacker()
 		]))
 		//.pipe(gulp.dest(paths.scssDir))
