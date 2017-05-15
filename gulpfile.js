@@ -10,7 +10,7 @@ var gulp         = require('gulp'),
 	cssnano      = require('cssnano');
 	//autoprefixer = require('autoprefixer'),
 	doiuse       = require('doiuse'),
-	mqpacker     = require('css-mqpacker'),
+	//mqpacker     = require('css-mqpacker'),
 	watch        = require('gulp-watch'),
 	plumber      = require('gulp-plumber'),
 	//jscs         = require('gulp-jscs'),
@@ -112,7 +112,7 @@ gulp.task('scss', function(){
 				ignoreFiles: ['**/normalize.scss']
 			}),
 			//autoprefixer({browsers: browsers}),
-			mqpacker()
+			//mqpacker()
 		]))
 		//.pipe(gulp.dest(paths.scssDir))
 		.pipe(gulp.dest(paths.dist.css))
