@@ -37,9 +37,9 @@ if ( post_password_required() ) {
 							$comments_number,
 							'comments title',
 							'blanche'
-						),
-						esc_html( number_format_i18n( $comments_number ) ),
-						get_the_title()
+							),
+							esc_html( number_format_i18n( $comments_number ) ),
+							get_the_title()
 					) );
 				}
 			?>

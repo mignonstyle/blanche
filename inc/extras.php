@@ -44,6 +44,7 @@ add_filter( 'excerpt_length',   'blanche_excerpt_length' );
 if ( ! function_exists( 'blanche_excerpt_more' ) ) :
 function blanche_excerpt_more( $link ) {
 	/*
+	Comment
 	if ( is_admin() ) {
 		return $link;
 	}
