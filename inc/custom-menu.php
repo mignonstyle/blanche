@@ -27,12 +27,8 @@ function blanche_main_navigation() {
 		<div class="navigation-top">
 			<nav id="site-navigation" class="main-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Top Menu', 'blanche' ); ?>">
 				<button class="menu-toggle" aria-controls="top-menu" aria-expanded="false"><?php
-				echo wp_kses_post( blanche_get_icon( array(
-					'icon' => 'bars',
-				) ) );
-				echo wp_kses_post( blanche_get_icon( array(
-					'icon' => 'times',
-				) ) );
+				echo wp_kses_post( blanche_set_default_icons( 'toggle_open' ) );
+				echo wp_kses_post( blanche_set_default_icons( 'toggle_close' ) );
 				esc_html_e( 'Menu', 'blanche' );
 				?></button>
 
@@ -59,9 +55,7 @@ function blanche_social_navigation() {
 	if ( has_nav_menu( 'social' ) ) : ?>
 		<nav class="social-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Footer Social Links Menu', 'blanche' ); ?>">
 			<?php
-				$icon = blanche_get_icon( array(
-					'icon' => 'link',
-				) );
+				$icon = blanche_set_default_icons( 'link' );
 
 				wp_nav_menu( array(
 					'theme_location' => 'social',
@@ -128,20 +122,3 @@ function blanche_nav_menu_social_icons( $item_output, $item, $depth, $args ) {
 	return $item_output;
 }
 add_filter( 'walker_nav_menu_start_el', 'blanche_nav_menu_social_icons', 10, 4 );
-
-/**
- * Display default icons.
- */
-function blanche_set_default_icons( $item_output ) {
-	$default_icons = blanche_default_icons();
-
-	foreach ( $default_icons as $attr => $value ) {
-		if ( false !== strpos( $item_output, $attr ) ) {
-			$item_output = blanche_get_icon( array(
-				'icon' => esc_attr( $value ),
-			) );
-		}
-	}
-
-	return $item_output;
-}

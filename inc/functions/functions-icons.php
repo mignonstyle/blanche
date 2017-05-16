@@ -62,19 +62,40 @@ function blanche_social_links_icons() {
  */
 function blanche_default_icons() {
 	$default_icons = array(
-		'author'      => 'user',
-		'date'        => 'calendar',
-		'edit'        => 'pencil',
-		'cat'         => 'folder-open',
-		'tags'        => 'hashtag',
-		'prev'        => 'arrow-left',
-		'next'        => 'arrow-right',
-		'sticky'      => 'thumb-tack',
-		'scroll_down' => 'arrow-right',
+		'author'       => 'user',
+		'date'         => 'calendar',
+		'edit'         => 'pencil',
+		'cat'          => 'folder-open',
+		'tags'         => 'hashtag',
+		'prev'         => 'arrow-left',
+		'next'         => 'arrow-right',
+		'sticky'       => 'thumb-tack',
+		'scroll_down'  => 'arrow-right',
+		'mail_reply'   => 'reply',
+		'toggle_open'  => 'bars',
+		'toggle_close' => 'times',
+		'link'         => 'link',
 	);
 
 	/**
 	 * Filter default icons.
 	 */
 	return apply_filters( 'blanche_default_icons', $default_icons );
+}
+
+/**
+ * Display default icons.
+ */
+function blanche_set_default_icons( $item_output ) {
+	$default_icons = blanche_default_icons();
+
+	foreach ( $default_icons as $attr => $value ) {
+		if ( false !== strpos( $item_output, $attr ) ) {
+			$item_output = blanche_get_icon( array(
+				'icon' => esc_attr( $value ),
+			) );
+		}
+	}
+
+	return $item_output;
 }
