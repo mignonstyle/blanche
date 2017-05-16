@@ -211,7 +211,6 @@ function blanche_no_post_content() {
 	} else {
 		$content_text = __( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'blanche' );
 
-		// $search_form = true;
 	}
 
 	?>
