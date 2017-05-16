@@ -163,7 +163,7 @@ function blanche_post_header() {
 	}
 	?>
 	<header class="page-header">
-		<h1 class="page-title"><?php echo esc_attr( $pege_title_text ); ?></h1>
+		<h1 class="page-title"><?php echo esc_html( $pege_title_text ); ?></h1>
 	</header>
 	<?php
 }
@@ -183,7 +183,12 @@ function blanche_no_post_content() {
 		$search_form = false;
 
 	} elseif ( is_404() ) {
+		?>
+		test
+		<?php
+
 		/*
+		// Comments
 		$no_post_404_text = __( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'blanche' );
 		$no_post_text = apply_filters( 'blanche_no_post_404_text', $no_post_404_text );
 
@@ -191,7 +196,12 @@ function blanche_no_post_content() {
 		*/
 
 	} elseif ( is_search() ) {
+		?>
+		test
+		<?php
+
 		/*
+		// Comments
 		$no_post_search_text = __( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'blanche' );
 		$no_post_text = apply_filters( 'blanche_no_post_search_text', $no_post_search_text );
 
@@ -201,12 +211,12 @@ function blanche_no_post_content() {
 	} else {
 		$content_text = __( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'blanche' );
 
-		//$search_form = true;
+		// $search_form = true;
 	}
 
 	?>
 	<div class="page-content">
-		<p><?php echo esc_attr( $content_text ); ?></p>
+		<p><?php echo esc_html( $content_text ); ?></p>
 		<?php
 		if ( $search_form ) {
 			get_search_form();

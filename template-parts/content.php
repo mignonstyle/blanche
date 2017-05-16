@@ -11,7 +11,7 @@
 	<?php
 
 	if ( is_sticky() && is_home() ) {
-		echo blanche_set_default_icons( 'sticky' );
+		echo wp_kses_post( blanche_set_default_icons( 'sticky' ) );
 	}
 
 	// Display the entry header.

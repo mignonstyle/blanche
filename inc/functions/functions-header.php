@@ -76,7 +76,7 @@ function blanche_site_header_description() {
 	$description = get_bloginfo( 'description', 'display' );
 
 	if ( $description || is_customize_preview() ) : ?>
-		<p class="site-description"><?php echo $description; ?></p>
+		<p class="site-description"><?php echo esc_html( $description ); ?></p>
 	<?php endif;
 }
 endif;
@@ -87,7 +87,7 @@ endif;
 if ( ! function_exists( 'blanche_scroll_content' ) ) :
 function blanche_scroll_content() {
 	?>
-	<a href="#content" class="menu-scroll-down"><?php echo blanche_set_default_icons( 'scroll_down' ); ?><span class="screen-reader-text"><?php _e( 'Scroll down to content', 'blanche' ); ?></span></a>
+	<a href="#content" class="menu-scroll-down"><?php echo wp_kses_post( blanche_set_default_icons( 'scroll_down' ) ); ?><span class="screen-reader-text"><?php esc_html_e( 'Scroll down to content', 'blanche' ); ?></span></a>
 	<?php
 }
 endif;

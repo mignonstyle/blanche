@@ -27,9 +27,9 @@ function blanche_main_navigation() {
 		<div class="navigation-top">
 			<nav id="site-navigation" class="main-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Top Menu', 'blanche' ); ?>">
 				<button class="menu-toggle" aria-controls="top-menu" aria-expanded="false"><?php
-				echo blanche_get_icon( array( 'icon' => 'bars' ) );
-				echo blanche_get_icon( array( 'icon' => 'times' ) );
-				_e( 'Menu', 'blanche' );
+				echo wp_kses_post( blanche_get_icon( array( 'icon' => 'bars' ) ) );
+				echo wp_kses_post( blanche_get_icon( array( 'icon' => 'times' ) ) );
+				esc_html_e( 'Menu', 'blanche' );
 				?></button>
 
 				<?php wp_nav_menu( array(
@@ -81,9 +81,9 @@ function blanche_get_icon( $args = array() ) {
 	// Set defaults.
 	$defaults = array(
 		'icon'        => '',
-		//'title'       => '',
-		//'desc'        => '',
-		//'fallback'    => false,
+		'title'       => '',
+		'desc'        => '',
+		'fallback'    => false,
 	);
 
 	// Parse args.

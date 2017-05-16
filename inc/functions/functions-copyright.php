@@ -20,14 +20,14 @@ function blanche_footer_copyright() {
 	printf(
 		esc_html__( '%1$s theme by %2$s', 'blanche' ),
 		'Blanche',
-		'<a href="' . $theme_url . '" rel="designer">Mignon Style</a>'
+		'<a href="' . esc_url( $theme_url ) . '" rel="designer">Mignon Style</a>'
 	);
 
 	echo '<span class="sep"> | </span>';
 
 	printf(
 		esc_html__( 'Powered by %s', 'blanche' ),
-		'<a href="' . $wordpress_url . '" rel="designer">WordPress</a>'
+		'<a href="' . esc_url( $wordpress_url ) . '" rel="designer">WordPress</a>'
 	);
 
 	echo '</div><!-- .footer-copyright -->';

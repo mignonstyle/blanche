@@ -24,14 +24,14 @@ function blanche_entry_meta_date() {
 		get_the_modified_date()
 	);
 
-	echo '<span class="entry-meta-date  entry-metadata">';
-
-	echo blanche_set_default_icons( 'date' );
-	printf(
+	$time_text = sprintf(
 		__( '<span class="screen-reader-text">Posted on</span> %s', 'blanche' ),
 		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 	);
 
+	echo '<span class="entry-meta-date  entry-metadata">';
+	echo wp_kses_post( blanche_set_default_icons( 'date' ) );
+	echo wp_kses_post( $time_text );
 	echo '</span>';
 }
 endif;
@@ -42,10 +42,10 @@ endif;
 if ( ! function_exists( 'blanche_entry_meta_author' ) ) :
 function blanche_entry_meta_author() {
 	echo '<span class="entry-meta-author  entry-metadata">';
-	echo blanche_set_default_icons( 'author' );
+	echo wp_kses_post( blanche_set_default_icons( 'author' ) );
 
 	// Get the author name; wrap it in a link.
-	echo '<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . get_the_author() . '</a></span>';
+	echo '<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>';
 
 	echo '</span>';
 }
@@ -62,7 +62,9 @@ function blanche_entry_meta_cat( $categories_list = '' ) {
 	}
 
 	if ( $categories_list && blanche_categorized_blog() ) {
-		echo '<span class="cat-links">' . blanche_set_default_icons( 'cat' ) . '<span class="screen-reader-text">' . __( 'Categories', 'blanche' ) . '</span>' . $categories_list . '</span>';
+		echo '<span class="cat-links">';
+		echo wp_kses_post( blanche_set_default_icons( 'cat' ) ) . '<span class="screen-reader-text">' . esc_html__( 'Categories', 'blanche' ) . '</span>' . wp_kses_post( $categories_list );
+		echo '</span>';
 	}
 }
 endif;
@@ -76,7 +78,9 @@ function blanche_entry_meta_tags( $tags_list = '' ) {
 	$tags_list = get_the_tag_list( '', esc_html__( ', ', 'blanche' ) );
 
 	if ( $tags_list ) {
-		echo '<span class="tags-links">' . blanche_set_default_icons( 'tags' ) . '<span class="screen-reader-text">' . __( 'Tags', 'blanche' ) . '</span>' . $tags_list . '</span>';
+		echo '<span class="tags-links">';
+		echo wp_kses_post( blanche_set_default_icons( 'tags' ) ) . '<span class="screen-reader-text">' . esc_html__( 'Tags', 'blanche' ) . '</span>' . wp_kses_post( $tags_list );
+		echo '</span>';
 	}
 }
 endif;
@@ -98,10 +102,12 @@ function blanche_entry_meta_edit() {
 }
 endif;
 
-
 /**
- * entry meta comments link.
- *//*
+ * Entry meta comments link.
+ */
+
+/*
+// Entry meta
 if ( ! function_exists( 'blanche_entry_meta_comments_link' ) ) :
 function blanche_entry_meta_comments_link() {
 	if (  is_singular() ) {

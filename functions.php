@@ -78,9 +78,6 @@ add_action( 'template_redirect', 'blanche_content_width', 0 );
 /**
  * Include files.
  */
-//require get_parent_theme_file_path( '/inc/template-tags.php' );
-
-
 foreach ( glob( get_parent_theme_file_path( '/inc/*.php' ) ) as $theme_files ) {
 	require $theme_files;
 }
@@ -88,15 +85,3 @@ foreach ( glob( get_parent_theme_file_path( '/inc/*.php' ) ) as $theme_files ) {
 foreach ( glob( get_parent_theme_file_path( '/inc/functions/*.php' ) ) as $theme_functions ) {
 	require $theme_functions;
 }
-
-/*
-
-foreach ( glob( MS_WCR_PATH . 'admin/widget/widget-settings/*.php' ) as $theme_functions ) {
-			include_once $widget_item;
-			$basename = basename( $widget_item, '.php' );
-			$widget_name = preg_replace( '/^class\.widget\-(.+)$/', '$1', $basename );
-			$class_name = MS_WCR_WIDGET_PREFIX . '_' . $widget_name;
-			add_action( 'widgets_init', array( $class_name, 'init' ) );
-		}
-
-*/
