@@ -28,10 +28,10 @@ function blanche_main_navigation() {
 			<nav id="site-navigation" class="main-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Top Menu', 'blanche' ); ?>">
 				<button class="menu-toggle" aria-controls="top-menu" aria-expanded="false"><?php
 				echo wp_kses_post( blanche_get_icon( array(
-					'icon' => 'bars'
+					'icon' => 'bars',
 				) ) );
 				echo wp_kses_post( blanche_get_icon( array(
-					'icon' => 'times'
+					'icon' => 'times',
 				) ) );
 				esc_html_e( 'Menu', 'blanche' );
 				?></button>
@@ -60,7 +60,7 @@ function blanche_social_navigation() {
 		<nav class="social-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Footer Social Links Menu', 'blanche' ); ?>">
 			<?php
 				$icon = blanche_get_icon( array(
-					'icon' => 'link'
+					'icon' => 'link',
 				) );
 
 				wp_nav_menu( array(
@@ -119,7 +119,7 @@ function blanche_nav_menu_social_icons( $item_output, $item, $depth, $args ) {
 		foreach ( $social_icons as $attr => $value ) {
 			if ( false !== strpos( $item_output, $attr ) ) {
 				$item_output = str_replace( $args->link_before, '<span class="screen-reader-text">' . blanche_get_icon( array(
-					'icon' => esc_attr( $value )
+					'icon' => esc_attr( $value ),
 				) ), $item_output );
 			}
 		}
@@ -138,7 +138,7 @@ function blanche_set_default_icons( $item_output ) {
 	foreach ( $default_icons as $attr => $value ) {
 		if ( false !== strpos( $item_output, $attr ) ) {
 			$item_output = blanche_get_icon( array(
-				'icon' => esc_attr( $value )
+				'icon' => esc_attr( $value ),
 			) );
 		}
 	}
