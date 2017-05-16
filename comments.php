@@ -24,26 +24,27 @@ if ( post_password_required() ) {
 	if ( have_comments() ) : ?>
 		<h2 class="comments-title">
 			<?php
+				$comments_title = '';
 				$comments_number = get_comments_number();
 				if ( '1' === $comments_number ) {
 					/* translators: %s: post title */
-					printf( esc_attr_x( 'One Reply to &ldquo;%s&rdquo;', 'comments title', 'blanche' ), get_the_title() );
+					$comments_title = sprintf( esc_attr_x( 'One Reply to &ldquo;%s&rdquo;', 'comments title', 'blanche' ), get_the_title() );
 				} else {
-					printf(
+					$comments_title = sprintf(
 						/* translators: 1: number of comments, 2: post title */
-						esc_html(
-							_nx(
-								'%1$s Reply to &ldquo;%2$s&rdquo;',
-								'%1$s Replies to &ldquo;%2$s&rdquo;',
-								$comments_number,
-								'comments title',
-								'blanche'
-							),
-							esc_html( number_format_i18n( $comments_number ) ),
-							get_the_title()
-						)
+						_nx(
+							'%1$s Reply to &ldquo;%2$s&rdquo;',
+							'%1$s Replies to &ldquo;%2$s&rdquo;',
+							$comments_number,
+							'comments title',
+							'blanche'
+						),
+						esc_html( number_format_i18n( $comments_number ) ),
+						get_the_title()
 					);
 				}
+
+				echo esc_html( $comments_title );
 			?>
 		</h2>
 
