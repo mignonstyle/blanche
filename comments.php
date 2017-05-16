@@ -28,7 +28,7 @@ if ( post_password_required() ) {
 				$comments_number = get_comments_number();
 				if ( '1' === $comments_number ) {
 					/* translators: %s: post title */
-					$comments_title = sprintf( esc_attr_x( 'One Reply to &ldquo;%s&rdquo;', 'comments title', 'blanche' ), get_the_title() );
+					$comments_title = sprintf( _x( 'One Reply to &ldquo;%s&rdquo;', 'comments title', 'blanche' ), get_the_title() );
 				} else {
 					$comments_title = sprintf(
 						/* translators: 1: number of comments, 2: post title */
