@@ -27,31 +27,28 @@ endif;
  */
 if ( ! function_exists( 'blanche_site_header_branding' ) ) :
 function blanche_site_header_branding() {
-?>
-	<div class="site-branding">
-		<?php
-		// Display a custom logo, linked to home.
-		the_custom_logo();
-		?>
 
-		<div class="site-branding-text">
-			<?php
-			// Display header site branding title.
-			blanche_site_header_title();
+	echo '<di1v class="site-branding">';
 
-			// Display header site branding description.
-			blanche_site_header_description();
-			?>
-		</div><!-- .site-branding-text -->
+	// Display a custom logo, linked to home.
+	the_custom_logo();
 
-		<?php
-		// Display header scroll down to content.
-		if ( ( ( is_front_page() && ! is_home() ) || ( is_home() && is_front_page() ) ) && ! has_nav_menu( 'top' ) ) {
-			blanche_scroll_content();
-		}
-	?>
-	</div><!-- .site-branding -->
-<?php
+	echo '<div class="site-branding-text">';
+
+	// Display header site branding title.
+	blanche_site_header_title();
+
+	// Display header site branding description.
+	blanche_site_header_description();
+
+	echo '</div><!-- .site-branding-text -->';
+
+	// Display header scroll down to content.
+	if ( ( ( is_front_page() && ! is_home() ) || ( is_home() && is_front_page() ) ) && ! has_nav_menu( 'top' ) ) {
+		blanche_scroll_content();
+	}
+
+	echo '</div><!-- .site-branding -->';
 }
 endif;
 

@@ -8,6 +8,23 @@
  */
 
 /**
+ * Display the page header of index.php.
+ */
+if ( ! function_exists( 'blanche_page_heade' ) ) :
+function blanche_page_heade() {
+	if ( is_home() && ! is_front_page() ) : ?>
+		<header class="page-header">
+			<h1 class="page-title"><?php single_post_title(); ?></h1>
+		</header>
+	<?php else : ?>
+	<header class="page-header">
+		<h2 class="page-title"><?php esc_html_e( 'Posts', 'blanche' ); ?></h2>
+	</header>
+	<?php endif;
+}
+endif;
+
+/**
  * Display the entry header.
  */
 if ( ! function_exists( 'blanche_entry_header' ) ) :

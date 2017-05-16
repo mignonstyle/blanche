@@ -1,6 +1,6 @@
 <?php
 /**
- * Functions and definitions for this theme
+ * Functions and definitions.
  *
  * @package   blanche
  * @copyright Mignon Style
