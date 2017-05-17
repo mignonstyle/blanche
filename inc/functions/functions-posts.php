@@ -8,7 +8,7 @@
  */
 
 /**
- * Display the page header of index.php.
+ * Display the page header.
  */
 if ( ! function_exists( 'blanche_page_header' ) ) :
 function blanche_page_header() {
@@ -17,10 +17,21 @@ function blanche_page_header() {
 	if ( is_home() && ! is_front_page() ) {
 		echo '<h1 class="page-title">' . single_post_title( '', false ) . '</h1>';
 
-	} elseif( is_archive() ) {
+	} elseif ( is_archive() ) {
 		the_archive_title( '<h1 class="page-title">', '</h1>' );
 		the_archive_description( '<div class="taxonomy-description">', '</div>' );
 
+	} elseif ( is_404() ) {
+		echo '<h1 class="page-title">' . esc_html__( 'Oops! That page can&rsquo;t be found.', 'blanche' ) . '</h1>';
+
+	} elseif ( is_search() ) {
+		if ( have_posts() ) {
+			echo '<h1 class="page-title">' . wp_kses_post( sprintf( __( 'Search Results for: %s', 'blanche' ), '<span>' . get_search_query() . '</span>' ) ) . '</h1>';
+
+		} else {
+			echo '<h1 class="page-title">' . esc_html__( 'Nothing Found', 'blanche' ) . '</h1>';
+
+		}
 	} else {
 		echo '<h2 class="page-title">' . esc_html__( 'Posts', 'blanche' ) . '</h2>';
 
@@ -51,16 +62,19 @@ function blanche_entry_header() {
 				blanche_entry_meta_edit();
 			}
 
+			echo '</div><!-- .entry-meta -->';
+
+	} elseif ( is_page() || ( 'page' === get_post_type() && get_edit_post_link() ) ) {
+		echo '<div class="entry-meta">';
+
+		// Entry meta edit.
+		blanche_entry_meta_edit( get_the_ID() );
 		echo '</div><!-- .entry-meta -->';
+
 	}
 
 	// Prints the post title.
 	blanche_entry_title();
-
-	if ( is_page() ) {
-		// Entry meta edit.
-		blanche_entry_meta_edit( get_the_ID() );
-	}
 
 	echo '</header><!-- .entry-header -->';
 }
@@ -123,10 +137,16 @@ endif;
  */
 if ( ! function_exists( 'blanche_entry_content_post' ) ) :
 function blanche_entry_content_post() {
-	the_content( sprintf(
-		__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'blanche' ),
-		get_the_title()
-	) );
+	if ( is_archive() || is_search() ) {
+		the_excerpt();
+
+	} else {
+		the_content( sprintf(
+			__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'blanche' ),
+			get_the_title()
+		) );
+
+	}
 }
 endif;
 
@@ -211,30 +231,10 @@ function blanche_no_post_content() {
 		$search_form = false;
 
 	} elseif ( is_404() ) {
-		?>
-		test
-		<?php
-
-		/*
-		// Comments
-		$no_post_404_text = __( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'blanche' );
-		$no_post_text = apply_filters( 'blanche_no_post_404_text', $no_post_404_text );
-
-		$search_form = 'true';
-		*/
+		$content_text = __( 'It looks like nothing was found at this location. Maybe try a search?', 'blanche' );
 
 	} elseif ( is_search() ) {
-		?>
-		test
-		<?php
-
-		/*
-		// Comments
-		$no_post_search_text = __( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'blanche' );
-		$no_post_text = apply_filters( 'blanche_no_post_search_text', $no_post_search_text );
-
-		$search_form = 'true';
-		*/
+		$content_text = __( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'blanche' );
 
 	} else {
 		$content_text = __( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'blanche' );
