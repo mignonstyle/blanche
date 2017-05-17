@@ -62,11 +62,13 @@ function blanche_social_links_icons() {
  */
 function blanche_default_icons() {
 	$default_icons = array(
-		'author'       => 'user',
-		'date'         => 'calendar',
-		'edit'         => 'pencil',
 		'cat'          => 'folder-open',
 		'tags'         => 'hashtag',
+		'author'       => 'user',
+		'date'         => 'calendar',
+		'archive'      => 'archive',
+		'file'         => 'file-o',
+		'edit'         => 'pencil',
 		'prev'         => 'arrow-left',
 		'next'         => 'arrow-right',
 		'sticky'       => 'thumb-tack',

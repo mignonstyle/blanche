@@ -27,25 +27,33 @@ add_action( 'wp_head', 'blanche_pingback_header', -9999 );
  */
 function blanche_get_the_archive_title( $title ) {
 	if ( is_category() ) {
-		$title = single_cat_title( '', false );
+		$title = blanche_set_default_icons( 'cat' ) . single_cat_title( '', false );
 
 	} elseif ( is_tag() ) {
-		$title = single_tag_title( '', false );
+		$title = blanche_set_default_icons( 'tags' ) . single_tag_title( '', false );
 
 	} elseif ( is_author() ) {
-		$title = '<span class="vcard">' . get_the_author() . '</span>';
+		$title = blanche_set_default_icons( 'author' ) . '<span class="vcard">' . get_the_author() . '</span>';
 
 	} elseif ( is_year() ) {
-		$title = get_the_date( _x( 'Y', 'yearly archives date format' ) );
+		$title = blanche_set_default_icons( 'date' ) . get_the_date( _x( 'Y', 'yearly archives date format' ) );
 
 	} elseif ( is_month() ) {
-		$title = get_the_date( _x( 'F Y', 'monthly archives date format' ) );
+		$title = blanche_set_default_icons( 'date' ) . get_the_date( _x( 'F Y', 'monthly archives date format' ) );
 
 	} elseif ( is_day() ) {
-		$title = get_the_date( _x( 'F j, Y', 'daily archives date format' ) );
+		$title = blanche_set_default_icons( 'date' ) . get_the_date( _x( 'F j, Y', 'daily archives date format' ) );
 
 	} elseif ( is_post_type_archive() ) {
-		$title = post_type_archive_title( '', false );
+		$title = blanche_set_default_icons( 'archive' ) . post_type_archive_title( '', false );
+
+	} elseif ( is_tax() ) {
+		$tax = get_taxonomy( get_queried_object()->taxonomy );
+		/* translators: Taxonomy term archive title. 1: Taxonomy singular name, 2: Current taxonomy term */
+		$title = blanche_set_default_icons( 'file' ) . sprintf( __( '%1$s: %2$s' ), $tax->labels->singular_name, single_term_title( '', false ) );
+
+	} else {
+		$title = blanche_set_default_icons( 'archive' ) . __( 'Archives' );
 
 	}
 
