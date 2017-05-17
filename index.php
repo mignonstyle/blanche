@@ -11,7 +11,7 @@ get_header(); ?>
 
 <div class="wrap">
 	<?php
-	// Display the page header of index.php.
+	// Display the page header.
 	blanche_page_header();
 	?>
 
