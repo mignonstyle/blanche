@@ -79,6 +79,8 @@ function blanche_default_icons() {
 		'link'         => 'link',
 		'comment'      => 'comment',
 		'search'       => 'search',
+		'play'         => 'play',
+		'pause'        => 'pause',
 	);
 
 	/**
