@@ -14,14 +14,13 @@ get_header(); ?>
 		<main id="main" class="site-main" role="main">
 
 			<section class="error-404 not-found">
-				<header class="page-header">
-					<h1 class="page-title"><?php _e( 'Oops! That page can&rsquo;t be found.', 'blanche' ); ?></h1>
-				</header><!-- .page-header -->
-				<div class="page-content">
-					<p><?php _e( 'It looks like nothing was found at this location. Maybe try a search?', 'blanche' ); ?></p>
+				<?php
+				// Display the page header.
+				blanche_page_header();
 
-					<?php get_search_form(); ?>
-
+				// Print of the content of no posts and 404 page.
+				blanche_no_post_content();
+				?>
 				</div><!-- .page-content -->
 			</section><!-- .error-404 -->
 		</main><!-- #main -->
