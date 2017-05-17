@@ -12,7 +12,10 @@
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<?php
 		// Displays footer widgets if assigned.
-		blanche_footer_widgets();
+		blanche_footer_top_widgets();
+
+		// Displays footer widget columns if assigned.
+		blanche_footer_widget_columns();
 
 		// Display footer navigation.
 		blanche_footer_navigation();
