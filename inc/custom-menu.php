@@ -12,7 +12,9 @@
  */
 function blanche_custom_menu_setup() {
 	register_nav_menus( array(
+		'main'   => __( 'Main Menu', 'blanche' ),
 		'top'    => __( 'Top Menu', 'blanche' ),
+		'footer' => __( 'Footer Menu', 'blanche' ),
 		'social' => __( 'Social Links Menu', 'blanche' ),
 	) );
 }
@@ -23,18 +25,18 @@ add_action( 'after_setup_theme', 'blanche_custom_menu_setup' );
  */
 if ( ! function_exists( 'blanche_main_navigation' ) ) :
 function blanche_main_navigation() {
-	if ( has_nav_menu( 'top' ) ) : ?>
-		<div class="navigation-top">
-			<nav id="site-navigation" class="main-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Top Menu', 'blanche' ); ?>">
-				<button class="menu-toggle" aria-controls="top-menu" aria-expanded="false"><?php
+	if ( has_nav_menu( 'main' ) ) : ?>
+		<div class="navigation-main">
+			<nav id="site-navigation" class="main-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Main Menu', 'blanche' ); ?>">
+				<button class="menu-toggle" aria-controls="main-menu" aria-expanded="false"><?php
 				echo wp_kses_post( blanche_set_default_icons( 'toggle-open' ) );
 				echo wp_kses_post( blanche_set_default_icons( 'toggle-close' ) );
 				esc_html_e( 'Menu', 'blanche' );
 				?></button>
 
 				<?php wp_nav_menu( array(
-					'theme_location' => 'top',
-					'menu_id'        => 'top-menu',
+					'theme_location' => 'main',
+					'menu_id'        => 'main-menu',
 				) );
 
 				// Display header scroll down to content.
@@ -43,6 +45,44 @@ function blanche_main_navigation() {
 				} ?>
 			</nav><!-- #site-navigation -->
 		</div><!-- .navigation-top -->
+	<?php endif;
+}
+endif;
+
+/**
+ * Display top navigation.
+ */
+if ( ! function_exists( 'blanche_top_navigation' ) ) :
+function blanche_top_navigation() {
+	if ( has_nav_menu( 'top' ) ) : ?>
+		<nav class="top-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Top Menu', 'blanche' ); ?>">
+			<?php
+				wp_nav_menu( array(
+					'theme_location' => 'top',
+					'menu_class'     => 'top-menu',
+					'depth'          => 1,
+				) );
+			?>
+		</nav><!-- .social-navigation -->
+	<?php endif;
+}
+endif;
+
+/**
+ * Display footer navigation.
+ */
+if ( ! function_exists( 'blanche_footer_navigation' ) ) :
+function blanche_footer_navigation() {
+	if ( has_nav_menu( 'footer' ) ) : ?>
+		<nav class="footer-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Footer Menu', 'blanche' ); ?>">
+			<?php
+				wp_nav_menu( array(
+					'theme_location' => 'footer',
+					'menu_class'     => 'footer-menu',
+					'depth'          => 1,
+				) );
+			?>
+		</nav><!-- .social-navigation -->
 	<?php endif;
 }
 endif;
@@ -69,6 +109,10 @@ function blanche_social_navigation() {
 	<?php endif;
 }
 endif;
+
+
+
+
 
 /**
  * Displays icon font.

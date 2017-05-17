@@ -20,11 +20,16 @@
 	<header id="masthead" class="site-header" role="banner">
 		<div class="custom-header">
 			<?php
-			// Print the markup for a custom header.
-			blanche_header_image();
 
 			// Display header site branding.
 			blanche_site_header_branding();
+
+			// Display top navigation.
+			blanche_top_navigation();
+
+			// Print the markup for a custom header.
+			blanche_header_image();
+
 			?>
 		</div><!-- .custom-header -->
 

@@ -14,6 +14,9 @@
 		// Displays footer widgets if assigned.
 		blanche_footer_widgets();
 
+		// Display footer navigation.
+		blanche_footer_navigation();
+
 		// Displays social navigation.
 		blanche_social_navigation();
 
