@@ -12,7 +12,7 @@
  */
 function blanche_widgets_init() {
 	register_sidebar( array(
-		'name'          => __( 'Sidebar', 'blanche' ),
+		'name'          => __( 'Sidebar 1', 'blanche' ),
 		'id'            => 'sidebar-widget-1',
 		'description'   => __( 'Add widgets here to appear in your sidebar.', 'blanche' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
