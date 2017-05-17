@@ -54,7 +54,7 @@ if ( post_password_required() ) {
 					'avatar_size' => 100,
 					'style'       => 'ol',
 					'short_ping'  => true,
-					'reply_text'  => blanche_set_default_icons( 'mail_reply' ) . __( 'Reply', 'blanche' ),
+					'reply_text'  => blanche_set_default_icons( 'mail-reply' ) . __( 'Reply', 'blanche' ),
 				) );
 			?>
 		</ol>

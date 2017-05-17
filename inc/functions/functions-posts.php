@@ -51,6 +51,11 @@ function blanche_entry_header() {
 	// Prints the post title.
 	blanche_entry_title();
 
+	if ( is_page() ) {
+		// Entry meta edit.
+		blanche_entry_meta_edit( get_the_ID() );
+	}
+
 	echo '</header><!-- .entry-header -->';
 }
 endif;

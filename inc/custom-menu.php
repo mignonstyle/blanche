@@ -27,8 +27,8 @@ function blanche_main_navigation() {
 		<div class="navigation-top">
 			<nav id="site-navigation" class="main-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Top Menu', 'blanche' ); ?>">
 				<button class="menu-toggle" aria-controls="top-menu" aria-expanded="false"><?php
-				echo wp_kses_post( blanche_set_default_icons( 'toggle_open' ) );
-				echo wp_kses_post( blanche_set_default_icons( 'toggle_close' ) );
+				echo wp_kses_post( blanche_set_default_icons( 'toggle-open' ) );
+				echo wp_kses_post( blanche_set_default_icons( 'toggle-close' ) );
 				esc_html_e( 'Menu', 'blanche' );
 				?></button>
 

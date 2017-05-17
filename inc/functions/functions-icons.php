@@ -70,11 +70,12 @@ function blanche_default_icons() {
 		'prev'         => 'arrow-left',
 		'next'         => 'arrow-right',
 		'sticky'       => 'thumb-tack',
-		'scroll_down'  => 'arrow-right',
-		'mail_reply'   => 'reply',
-		'toggle_open'  => 'bars',
-		'toggle_close' => 'times',
+		'scroll-down'  => 'arrow-right',
+		'mail-reply'   => 'reply',
+		'toggle-open'  => 'bars',
+		'toggle-close' => 'times',
 		'link'         => 'link',
+		'comment'      => 'comment',
 	);
 
 	/**

@@ -29,7 +29,7 @@ function blanche_entry_meta_date() {
 		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 	);
 
-	echo '<span class="entry-meta-date  entry-metadata">';
+	echo '<span class="entry-metadata entry-date">';
 	echo wp_kses_post( blanche_set_default_icons( 'date' ) );
 	echo wp_kses_post( $time_text );
 	echo '</span>';
@@ -41,7 +41,7 @@ endif;
  */
 if ( ! function_exists( 'blanche_entry_meta_author' ) ) :
 function blanche_entry_meta_author() {
-	echo '<span class="entry-meta-author  entry-metadata">';
+	echo '<span class="entry-metadata entry-author">';
 	echo wp_kses_post( blanche_set_default_icons( 'author' ) );
 
 	// Get the author name; wrap it in a link.
@@ -96,7 +96,7 @@ function blanche_entry_meta_edit() {
 			__( 'Edit<span class="screen-reader-text"> "%s"</span>', 'blanche' ),
 			get_the_title()
 		),
-		'<span class="entry-meta-edit entry-metadata edit-link">' . blanche_set_default_icons( 'edit' ),
+		'<span class="entry-metadata entry-edit">' . blanche_set_default_icons( 'edit' ),
 		'</span>'
 	);
 }
@@ -105,27 +105,19 @@ endif;
 /**
  * Entry meta comments link.
  */
-
-/*
-// Entry meta
 if ( ! function_exists( 'blanche_entry_meta_comments_link' ) ) :
 function blanche_entry_meta_comments_link() {
-	if (  is_singular() ) {
-		return false;
-	}
-
-	$meta_icon = blanche_meta_comments_icon();
-
 	if ( ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
-		echo '<span class="entry-meta-comments entry-metadata comments-link">';
-		echo wp_kses( $meta_icon, blanche_wp_kses_allowed_html_icon() );
+		echo '<span class="entry-metadata entry-comments">';
+		echo wp_kses_post( blanche_set_default_icons( 'comment' ) );
+
 		// translators: %s: post title.
-		comments_popup_link( sprintf( wp_kses( __( '<span class="screen-reader-text"> on %s</span>', 'blanche' ), array( 'span' => array( 'class' => array() ) ) ), get_the_title() ) );
+		comments_popup_link( sprintf( __( '<span class="screen-reader-text"> on %s</span>', 'blanche' ), get_the_title() ) );
+
 		echo '</span>';
 	}
 }
 endif;
-*/
 
 /**
  * Returns true if a blog has more than 1 category.
