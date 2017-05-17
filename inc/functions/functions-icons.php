@@ -78,6 +78,7 @@ function blanche_default_icons() {
 		'toggle-close' => 'times',
 		'link'         => 'link',
 		'comment'      => 'comment',
+		'search'       => 'search',
 	);
 
 	/**
